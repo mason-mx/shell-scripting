@@ -2,8 +2,8 @@
 function lookthrough_dir(){
     for img in `find $1 -iname '*.png' -o -iname '*.jpg' -o -name "thumbs" -prune -type f`
     do
-        echo $img
-        filename="${img##*/}"
+        echo "$img"
+        filename="$img"
         convert "$img" -resize "100x" "$1/thumbs/$filename"
         echo "<a href=\"$img\" ><img src=\"thumbs/$filename\" title=\"$filename\" /></a>" >> $1"/"index.html
     done
